@@ -41,7 +41,6 @@ source-repository head
 Executable elm-reactor
   ghc-options:
     -threaded -O2 -W
-
   hs-source-dirs:
     src/backend
 
@@ -58,8 +57,8 @@ Executable elm-reactor
     StaticFiles.Build
 
   Build-depends:
-    aeson >= 0.7,
-    base >=4.2 && <5,
+    aeson,
+    base,
     blaze-html,
     blaze-markup,
     utf8-string,
@@ -67,7 +66,7 @@ Executable elm-reactor
     cmdargs,
     containers,
     directory >= 1.2,
-    elm-compiler == 0.18,
+    elm-compiler,
     elm-package,
     file-embed,
     filepath,
@@ -81,5 +80,32 @@ Executable elm-reactor
     time,
     transformers,
     unordered-containers,
-    websockets >= 0.9 && < 0.10,
-    websockets-snap >= 0.8.2.1
+    websockets,
+    websockets-snap
+
+  -- Build-depends:
+  --   aeson >= 0.7,
+  --   base >=4.2 && <5,
+  --   blaze-html,
+  --   blaze-markup,
+  --   utf8-string,
+  --   bytestring,
+  --   cmdargs,
+  --   containers,
+  --   directory >= 1.2,
+  --   elm-compiler == 0.18,
+  --   elm-package,
+  --   file-embed,
+  --   filepath,
+  --   fsnotify >= 0.2,
+  --   mtl,
+  --   process,
+  --   snap-core,
+  --   snap-server,
+  --   template-haskell,
+  --   text,
+  --   time,
+  --   transformers,
+  --   unordered-containers,
+  --   websockets >= 0.9 && < 0.10,
+  --   websockets-snap >= 0.8.2.1
