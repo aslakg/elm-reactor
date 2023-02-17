@@ -11,6 +11,7 @@ import qualified Text.Blaze.Html5.Attributes as A
 -- PAGES
 
 
+
 makeHtml :: String -> String -> String -> H.Html
 makeHtml title jsFile initCode =
   H.docTypeHtml $ do
@@ -81,9 +82,37 @@ codeStyle =
 
 -- ELM CODE
 
-
 makeElmHtml :: FilePath -> H.Html
 makeElmHtml filePath =
+  H.docTypeHtml $ do
+    H.head $ do
+      H.meta ! A.charset "UTF-8"
+      H.title $ H.toHtml ("~/" ++ filePath)
+      H.style ! A.type_ "text/css" $ elmStyle
+
+    H.body $ do
+      H.div ! A.style waitingStyle $ do
+        H.div ! A.style "font-size: 3em;" $ "Building your project!"
+        H.img ! A.src "/_reactor/waiting.gif"
+        H.div ! A.style "font-size: 1em" $ "With new projects, I need a bunch of extra time to download packages."
+
+    H.script ! A.src (H.toValue ("/_compile/" ++ filePath)) ! A.charset "utf-8" $ ""
+    H.script $ H.preEscapedToMarkup $ unlines $
+      [ "while (document.body.firstChild) {"
+      , "    document.body.removeChild(document.body.firstChild);"
+      , "}"
+
+      , "document.documentElement.addEventListener('keydown', function (e) {"
+        , "if (e.which == 38 || e.which == 40 || e.which == 9) { // up and down arrow and tab"
+        , "e.preventDefault();"
+        , "  }"
+      , "}, false);"
+
+      , "runElmProgram();"
+      ]
+      
+makeElmHtmlOrig :: FilePath -> H.Html
+makeElmHtmlOrig filePath =
   H.docTypeHtml $ do
     H.head $ do
       H.meta ! A.charset "UTF-8"
