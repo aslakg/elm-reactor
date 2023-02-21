@@ -43,29 +43,30 @@ notFoundPath =
 
 
 -- RAW RESOURCES
-
-
+-- foo = 21
+-- src = "/Users/emperor/asrc/haskell/elm-my/elm-reactor/src/"
+-- assets = "/Users/emperor/asrc/haskell/elm-my/elm-reactor/assets/"
 errors :: BS.ByteString
 errors =
-  $(bsToExp =<< runIO (Build.compile ("src" </> "pages" </> "Errors.elm")))
+  $(bsToExp =<< runIO (Build.compile ("/Users/emperor/asrc/haskell/elm-my/elm-reactor/src" </> "pages" </> "Errors.elm")))
 
 
 index :: BS.ByteString
 index =
-  $(bsToExp =<< runIO (Build.compile ("src" </> "pages" </> "Index.elm")))
+  $(bsToExp =<< runIO (Build.compile ("/Users/emperor/asrc/haskell/elm-my/elm-reactor/src" </> "pages" </> "Index.elm")))
 
 
 notFound :: BS.ByteString
 notFound =
-  $(bsToExp =<< runIO (Build.compile ("src" </> "pages" </> "NotFound.elm")))
+  $(bsToExp =<< runIO (Build.compile ("/Users/emperor/asrc/haskell/elm-my/elm-reactor/src" </> "pages" </> "NotFound.elm")))
 
 
 favicon :: BS.ByteString
 favicon =
-  $(bsToExp =<< runIO (BS.readFile ("assets" </> "favicon.ico")))
+  $(bsToExp =<< runIO (BS.readFile (assets </> "favicon.ico")))
 
 
 waiting :: BS.ByteString
 waiting =
-  $(bsToExp =<< runIO (BS.readFile ("assets" </> "waiting.gif")))
+  $(bsToExp =<< runIO (BS.readFile (assets </> "waiting.gif")))
 
