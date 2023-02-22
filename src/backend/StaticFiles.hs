@@ -43,7 +43,6 @@ notFoundPath =
 
 
 -- RAW RESOURCES
--- foo = 21
 -- src = "/Users/emperor/asrc/haskell/elm-my/elm-reactor/src/"
 -- assets = "/Users/emperor/asrc/haskell/elm-my/elm-reactor/assets/"
 errors :: BS.ByteString
@@ -63,10 +62,10 @@ notFound =
 
 favicon :: BS.ByteString
 favicon =
-  $(bsToExp =<< runIO (BS.readFile (assets </> "favicon.ico")))
+  $(bsToExp =<< runIO (BS.readFile ("/Users/emperor/asrc/haskell/elm-my/elm-reactor/assets/" </> "favicon.ico")))
 
 
 waiting :: BS.ByteString
 waiting =
-  $(bsToExp =<< runIO (BS.readFile (assets </> "waiting.gif")))
+  $(bsToExp =<< runIO (BS.readFile ("/Users/emperor/asrc/haskell/elm-my/elm-reactor/assets/" </> "waiting.gif")))
 
